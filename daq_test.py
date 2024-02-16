@@ -6,26 +6,23 @@ import csv
 print(sys.argv)
 
 start_time = time.time()
-run_time = 30
+run_time = 10
 run_time = int(sys.argv[1])
-now = start_time
 
-filename = "test_data.csv"
+filename = "data.csv"
 filename = sys.argv[2]
 file = open(filename,"w",newline='')
-dwriter = csv.writer(file)
+writer = csv.writer(file)
 
 meta_data = ["Time","Data"]
-dwriter.writerow(meta_data)
+writer.writerow(meta_data)
 print(meta_data)
 
-while (now - start_time) < run_time:
+now = time.time()
+while (now-start_time) < run_time:
     time.sleep(1)
     data = random.random()
     now = time.time()
-    datalist = [now,data]
-    dwriter.writerow(datalist)
-    print(datalist)
-
-
-
+    data_list = [now,data]
+    print(data_list)
+    writer.writerow(data_list)
